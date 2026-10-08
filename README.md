@@ -1,6 +1,10 @@
 <div align="center">
 
-<img src="docs/brand/wordmark-on-light.svg" alt="FATEEN" width="160">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/brand/wordmark-on-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="docs/brand/wordmark-on-light.svg">
+  <img src="docs/brand/wordmark-on-light.svg" alt="FATEEN" width="200">
+</picture>
 
 # Phone Tools
 **حوّل موبايلك لريموت كامل للكمبيوتر · Turn your phone into a full remote for your PC**
