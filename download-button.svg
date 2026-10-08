@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="64" viewBox="0 0 340 64" role="img" aria-label="Download · تحميل">
+  <rect width="340" height="64" rx="12" fill="#FF4F1F"/>
+  <g transform="translate(44 31)" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 -13 V6"/>
+    <path d="M-8 -2 L0 6 L8 -2"/>
+    <path d="M-12 8 V13 H12 V8"/>
+  </g>
+  <text x="76" y="40" font-family="'Segoe UI', Tahoma, Arial, 'DejaVu Sans', sans-serif" font-size="23" font-weight="700" fill="#FFFFFF">Download</text>
+  <rect x="204" y="16" width="2" height="32" rx="1" fill="#FFFFFF" fill-opacity="0.55"/>
+  <text x="272" y="41" text-anchor="middle" direction="rtl" font-family="'Segoe UI', Tahoma, Arial, 'DejaVu Sans', sans-serif" font-size="25" font-weight="700" fill="#FFFFFF">تحميل</text>
+</svg>

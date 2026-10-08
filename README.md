@@ -3,13 +3,15 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="wordmark-on-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="wordmark-on-light.svg">
-  <img src="wordmark-on-light.svg" alt="FATEEN" width="200" align="middle">
+  <img src="wordmark-on-light.svg" alt="FATEEN" width="260">
 </picture>
-&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://github.com/FATEEN-POS/Fateen-Phone-Tools/archive/refs/heads/main.zip"><img src="https://img.shields.io/badge/-%D8%AA%D8%AD%D9%85%D9%8A%D9%84%20%D8%A7%D9%84%D8%A2%D9%86-FF4F1F?style=for-the-badge&logo=github&logoColor=white" alt="تحميل الآن · Download now" align="middle"></a>
+
+<br><br>
+
+<a href="https://github.com/FATEEN-POS/Fateen-Phone-Tools/archive/refs/heads/main.zip"><img src="download-button.svg" alt="Download · تحميل" width="260"></a>
 
 # Phone Tools
-**حوّل موبايلك لريموت كامل للكمبيوتر · Turn your phone into a full remote for your PC**
+**Turn your phone into a full remote for your PC · حوّل موبايلك لريموت كامل للكمبيوتر**
 
 فطين. شغل بيكمّل.
 
@@ -26,11 +28,24 @@ presenter · mouse & keyboard · gamepad · screen mirror · files · camera · 
 
 ---
 
-**Jump to:** [🇪🇬 بالعربي](#-بالعربي) · [🇬🇧 English](#-english)
+<table>
+<tr>
+<td width="50%" valign="top">
 
----
+One server on your PC, one link on your phone. No app, no account, everything stays on your local Wi-Fi.
 
-## 🇪🇬 بالعربي
+### Features
+
+- **Presenter remote:** next/previous, start show, timer.
+- **Link Pad:** mouse, keyboard, gyro, joystick, and a virtual Xbox 360 gamepad for games.
+- **Arabic typing** from the phone straight into the PC.
+- **Screen screenshot / live mirror** of the PC on the phone.
+- **File browser**, restricted to the folders you list in `shares`.
+- **Phone camera and mic** to the PC (WebRTC + OBS).
+- **Macros, reminders, quick notes,** and **PC-to-phone push** for text and links.
+
+</td>
+<td width="50%" valign="top" align="right" dir="rtl">
 
 سيرفر واحد على الكمبيوتر + لينك واحد على الموبايل. من غير تطبيقات ومن غير حساب، كله على شبكة الواي فاي بتاعتك.
 
@@ -43,6 +58,29 @@ presenter · mouse & keyboard · gamepad · screen mirror · files · camera · 
 - **ملفات:** تصفح وتنزيل من فولدرات انت محددها بس.
 - **كاميرا/مايك الموبايل** للكمبيوتر (WebRTC + OBS).
 - **ماكروز** و**تذكيرات** و**ملاحظات سريعة** و**إرسال نص/لينك من الكمبيوتر للموبايل**.
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### Requirements
+
+- Windows
+- Node.js 18+
+- PC and phone on the same Wi-Fi network
+
+### Quick start (Windows)
+
+1. Install Node.js 18+.
+2. Copy `config.example.json` to `config.json` and change the PIN (or let the server create it).
+3. Double-click `start.bat` (installs packages on first run).
+4. On the phone (same Wi-Fi): scan the QR or open the link, accept the certificate warning once, enter the PIN.
+
+Or from a terminal: `npm install && npm start`
+
+</td>
+<td width="50%" valign="top" align="right" dir="rtl">
 
 ### المتطلبات
 
@@ -59,6 +97,23 @@ presenter · mouse & keyboard · gamepad · screen mirror · files · camera · 
 
 أو من التيرمنال: `npm install && npm start`
 
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### Security
+
+- Local network only, over HTTPS with a self-signed certificate generated on first run (not part of the repo).
+- PIN with a one-minute lockout after 5 wrong attempts.
+- Macros are defined in `config.json` only. The phone cannot send free-form commands.
+- File access is limited to the folders listed in `shares`.
+
+> ⚠️ **Do not expose the port to the internet** (no port forwarding, no public tunnels). Full details and how to report a vulnerability are in [SECURITY.md](SECURITY.md).
+
+</td>
+<td width="50%" valign="top" align="right" dir="rtl">
+
 ### الأمان
 
 - كل شيء على الشبكة المحلية، بـ HTTPS وشهادة self-signed بتتولد أول تشغيل (مش جزء من الريبو).
@@ -68,42 +123,33 @@ presenter · mouse & keyboard · gamepad · screen mirror · files · camera · 
 
 > ⚠️ **ماتفتحش البورت على الإنترنت.** المشروع متصمم للشبكة المحلية بس. التفاصيل الكاملة وطريقة الإبلاغ عن ثغرة في [SECURITY.md](SECURITY.md).
 
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### About Fateen
+
+**Fateen Digital Solutions** (فطين للحلول الرقمية) is based in Aswan, Egypt. We build offline-first POS and inventory systems, digital menus, and business websites for restaurants, cafés, and shops across Aswan and Upper Egypt. Phone Tools is an open-source utility from the team.
+
+[fateen1.me](https://fateen1.me) · [WhatsApp 01273929303](https://wa.me/201273929303) (daily, 10 AM – 6 PM Cairo time)
+
+</td>
+<td width="50%" valign="top" align="right" dir="rtl">
+
 ### عن فطين
 
 **فطين للحلول الرقمية** شركة في أسوان بتعمل أنظمة كاشير ومخازن بتشتغل بدون إنترنت، ومنيو رقمي، ومواقع للشركات في أسوان والصعيد. Phone Tools أداة مفتوحة المصدر من فطين، وتقدر تعرف أكتر على [fateen1.me](https://fateen1.me).
 
 للتواصل: [واتساب 01273929303](https://wa.me/201273929303) (كل يوم من 10 ص إلى 6 م).
 
+</td>
+</tr>
+</table>
+
 ---
 
-## 🇬🇧 English
-
-One server on your PC, one link on your phone. No app, no account, everything stays on your local Wi-Fi.
-
-### Features
-
-- **Presenter remote:** next/previous, start show, timer.
-- **Link Pad:** mouse, keyboard, gyro, joystick, and a virtual Xbox 360 gamepad for games.
-- **Arabic typing** from the phone straight into the PC.
-- **Screen screenshot / live mirror** of the PC on the phone.
-- **File browser**, restricted to the folders you list in `shares`.
-- **Phone camera and mic** to the PC (WebRTC + OBS).
-- **Macros, reminders, quick notes,** and **PC-to-phone push** for text and links.
-
-### Requirements
-
-- Windows
-- Node.js 18+
-- PC and phone on the same Wi-Fi network
-
-### Quick start (Windows)
-
-1. Install Node.js 18+.
-2. Copy `config.example.json` to `config.json` and change the PIN (or let the server create it).
-3. Double-click `start.bat` (installs packages on first run).
-4. On the phone (same Wi-Fi): scan the QR or open the link, accept the certificate warning once, enter the PIN.
-
-Or from a terminal: `npm install && npm start`
+## Developer reference
 
 ### Pages
 
@@ -135,15 +181,6 @@ Without them everything else still works. Mouse and keyboard need `@nut-tree-for
 | macros | Commands the phone can trigger. Defined here only, never sent from the phone. |
 | port | Defaults to `47100`; if busy, the next free port is used and saved here. |
 
-### Security
-
-- Local network only, over HTTPS with a self-signed certificate generated on first run (not part of the repo).
-- PIN with a one-minute lockout after 5 wrong attempts.
-- Macros are defined in `config.json` only. The phone cannot send free-form commands.
-- File access is limited to the folders listed in `shares`.
-
-> ⚠️ **Do not expose the port to the internet** (no port forwarding, no public tunnels). Full details and how to report a vulnerability are in [SECURITY.md](SECURITY.md).
-
 ### Notes
 
 - Received notes and files land in `inbox/`.
@@ -154,19 +191,11 @@ Without them everything else still works. Mouse and keyboard need `@nut-tree-for
 
 Create `modules/name.js` exporting `{ name, handle(msg, api, ws) }`, then add buttons in `public/index.html` with `data-m="name" data-a="action"`.
 
-### About Fateen
-
-**Fateen Digital Solutions** (فطين للحلول الرقمية) is based in Aswan, Egypt. We build offline-first POS and inventory systems, digital menus, and business websites for restaurants, cafés, and shops across Aswan and Upper Egypt. Phone Tools is an open-source utility from the team.
-
-[fateen1.me](https://fateen1.me) · [WhatsApp 01273929303](https://wa.me/201273929303) (daily, 10 AM – 6 PM Cairo time)
-
----
-
-## Brand
+### Brand
 
 UI follows Fateen identity v1.4: ink `#0E0E0E`, cream `#F2EFE8`, signal orange `#FF4F1F`; IBM Plex Sans Arabic + IBM Plex Sans (loaded from Google Fonts). Logo files and tokens are in `docs/brand/`.
 
-## Security policy
+### Security policy
 
 See [SECURITY.md](SECURITY.md) for supported versions and how to report a vulnerability privately.
 
