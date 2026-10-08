@@ -1,10 +1,12 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/brand/wordmark-on-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="docs/brand/wordmark-on-light.svg">
-  <img src="docs/brand/wordmark-on-light.svg" alt="FATEEN" width="200">
+  <source media="(prefers-color-scheme: dark)" srcset="wordmark-on-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="wordmark-on-light.svg">
+  <img src="wordmark-on-light.svg" alt="FATEEN" width="200" align="middle">
 </picture>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://github.com/FATEEN-POS/Fateen-Phone-Tools/archive/refs/heads/main.zip"><img src="https://img.shields.io/badge/-%D8%AA%D8%AD%D9%85%D9%8A%D9%84%20%D8%A7%D9%84%D8%A2%D9%86-FF4F1F?style=for-the-badge&logo=github&logoColor=white" alt="تحميل الآن · Download now" align="middle"></a>
 
 # Phone Tools
 **حوّل موبايلك لريموت كامل للكمبيوتر · Turn your phone into a full remote for your PC**
