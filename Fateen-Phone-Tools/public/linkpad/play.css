@@ -1,0 +1,31 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background: #171717;
+  overflow: hidden;
+  font-family: "IBM Plex Sans Arabic", "IBM Plex Sans", -apple-system, 'Segoe UI', Tahoma, sans-serif;
+}
+
+.game-status {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(14, 14, 14, 0.92);
+  color: #C9C5BA;
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-size: 15px;
+  z-index: 10;
+  text-align: center;
+  transition: opacity 0.4s ease;
+}
+.game-status.hidden { opacity: 0; pointer-events: none; }
+
+#game-canvas {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}

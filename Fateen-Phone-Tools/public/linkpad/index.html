@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Link Pad</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20rx%3D%2222%22%20fill%3D%22%230E0E0E%22/%3E%3Cpath%20d%3D%22M24.92%2C17.00%20L65.84%2C17.00%20L65.84%2C32.84%20L40.76%2C32.84%20L40.76%2C42.08%20L57.92%2C42.08%20L57.92%2C57.92%20L40.76%2C57.92%20L40.76%2C83.00%20L24.92%2C83.00%20Z%22%20fill%3D%22%23F2EFE8%22/%3E%3Ccircle%20cx%3D%2267.16%22%20cy%3D%2250.00%22%20r%3D%226.27%22%20fill%3D%22%23FF4F1F%22/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a href="/" class="brand-bar"><span class="mk"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="#0E0E0E"/><path d="M24.92,17.00 L65.84,17.00 L65.84,32.84 L40.76,32.84 L40.76,42.08 L57.92,42.08 L57.92,57.92 L40.76,57.92 L40.76,83.00 L24.92,83.00 Z" fill="#F2EFE8"/><circle cx="67.16" cy="50.00" r="6.27" fill="#FF4F1F"/></svg></span><b>FATEEN</b> · Phone Tools</a>
+  <div class="top-bar">
+    <div id="status" class="status disconnected">جاري الاتصال...</div>
+    <button id="settings-btn" class="settings-btn" title="الإعدادات">⚙️</button>
+  </div>
+
+  <div id="settings-overlay" class="settings-overlay">
+    <div class="settings-panel">
+      <h3>⚙️ الإعدادات</h3>
+
+      <div class="setting-row">
+        <label for="slider-gyro-mouse">
+          حساسية جيروسكوب الماوس
+          <span id="val-gyro-mouse" class="setting-val">0.6</span>
+        </label>
+        <input type="range" id="slider-gyro-mouse" min="0.2" max="1.5" step="0.1" />
+      </div>
+
+      <div class="setting-row">
+        <label for="slider-gyro-tilt">
+          حساسية جيروسكوب الكنترولر
+          <span id="val-gyro-tilt" class="setting-val">35°</span>
+        </label>
+        <input type="range" id="slider-gyro-tilt" min="15" max="60" step="1" />
+        <span class="setting-hint">كل ما الرقم يقل، الحساسية تزيد</span>
+      </div>
+
+      <div class="setting-row">
+        <label for="slider-touchpad-size">
+          حجم التاتش باد
+          <span id="val-touchpad-size" class="setting-val">55%</span>
+        </label>
+        <input type="range" id="slider-touchpad-size" min="30" max="75" step="5" />
+      </div>
+
+      <div class="setting-row">
+        <label for="slider-touch-sensitivity">
+          حساسية التاتش باد (الماوس باللمس)
+          <span id="val-touch-sensitivity" class="setting-val">1.0</span>
+        </label>
+        <input type="range" id="slider-touch-sensitivity" min="0.3" max="3" step="0.1" />
+        <span class="setting-hint">كل ما الرقم يزيد، الماوس يتحرك أسرع مع نفس حركة إصبعك</span>
+      </div>
+
+      <button id="settings-close-btn" class="settings-close-btn">تم ✓</button>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="touchpad">🖱️ ماوس</button>
+    <button class="tab-btn" data-tab="keyboard">⌨️ كيبورد</button>
+    <button class="tab-btn" data-tab="controller">🎮 كنترولر</button>
+    <button class="tab-btn" data-tab="games">🕹️ ألعاب</button>
+  </div>
+
+  <!-- تبويب الماوس -->
+  <section id="touchpad" class="tab-content active">
+    <div id="touchpad-area" class="touchpad-area">
+      <span class="hint">حرّك إصبعك هنا لتحريك الماوس</span>
+    </div>
+    <div class="mouse-buttons">
+      <button id="btn-left-click" class="mouse-btn">Click شمال</button>
+      <button id="btn-right-click" class="mouse-btn">Click يمين</button>
+    </div>
+    <div class="scroll-hint">اسحب بإصبعين لعمل Scroll</div>
+    <button id="gyro-mouse-toggle" class="gyro-btn">🎯 تفعيل التحكم بالجيروسكوب</button>
+  </section>
+
+  <!-- تبويب الكيبورد -->
+  <section id="keyboard" class="tab-content">
+    <div class="key-grid">
+      <button class="key-btn" data-key="up">⬆️</button>
+      <button class="key-btn" data-key="down">⬇️</button>
+      <button class="key-btn" data-key="left">⬅️</button>
+      <button class="key-btn" data-key="right">➡️</button>
+      <button class="key-btn" data-key="enter">Enter</button>
+      <button class="key-btn" data-key="esc">Esc</button>
+      <button class="key-btn wide" data-key="space">Space</button>
+      <button class="key-btn" data-key="backspace">⌫</button>
+      <button class="key-btn" data-key="tab">Tab</button>
+    </div>
+    <div class="text-input-row">
+      <input id="text-input" type="text" placeholder="اكتب هنا وابعت..." />
+      <button id="send-text-btn">إرسال</button>
+    </div>
+  </section>
+
+  <!-- تبويب الكنترولر: جويستيك حقيقي (ViGEm) -->
+  <section id="controller" class="tab-content controller-tab">
+    <div class="gamepad-status-bar disconnected" id="gamepad-status-bar">
+      <span id="gamepad-status-text">الجويستيك مش متوصل</span>
+      <button id="gamepad-connect-btn">وصّل الجويستيك 🎮</button>
+    </div>
+
+    <div class="gyro-row">
+      <button id="gyro-gamepad-toggle" class="gyro-btn">📱 تفعيل التحكم بالحركة (Tilt)</button>
+      <select id="gyro-stick-select">
+        <option value="left">تحكم في العصا الشمال</option>
+        <option value="right">تحكم في العصا اليمين</option>
+      </select>
+    </div>
+
+    <div class="gamepad-layout">
+      <!-- الصف العلوي: الشولدر والتريجرز -->
+      <div class="shoulder-row">
+        <button class="shoulder-btn" data-btn="lb">LB</button>
+        <button class="trigger-btn" data-axis="lt">LT</button>
+        <button class="trigger-btn" data-axis="rt">RT</button>
+        <button class="shoulder-btn" data-btn="rb">RB</button>
+      </div>
+
+      <div class="middle-row">
+        <!-- العصا الشمال -->
+        <div class="joystick-wrap">
+          <div class="joystick-base" id="stick-left">
+            <div class="joystick-handle" id="stick-left-handle"></div>
+          </div>
+        </div>
+
+        <!-- D-Pad + Start/Back -->
+        <div class="center-controls">
+          <div class="dpad">
+            <button class="dpad-btn dpad-up" data-dpad="up">▲</button>
+            <div class="dpad-mid">
+              <button class="dpad-btn dpad-left" data-dpad="left">◀</button>
+              <button class="dpad-btn dpad-center" disabled></button>
+              <button class="dpad-btn dpad-right" data-dpad="right">▶</button>
+            </div>
+            <button class="dpad-btn dpad-down" data-dpad="down">▼</button>
+          </div>
+          <div class="menu-buttons">
+            <button class="menu-btn" data-btn="back">Back</button>
+            <button class="menu-btn" data-btn="start">Start</button>
+          </div>
+        </div>
+
+        <!-- أزرار ABXY -->
+        <div class="abxy">
+          <button class="face-btn face-y" data-btn="y">Y</button>
+          <div class="abxy-mid">
+            <button class="face-btn face-x" data-btn="x">X</button>
+            <button class="face-btn face-b" data-btn="b">B</button>
+          </div>
+          <button class="face-btn face-a" data-btn="a">A</button>
+        </div>
+      </div>
+
+      <!-- العصا اليمين -->
+      <div class="right-stick-row">
+        <div class="joystick-wrap">
+          <div class="joystick-base" id="stick-right">
+            <div class="joystick-handle" id="stick-right-handle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- تبويب الألعاب البسيطة (Phase 5) -->
+  <section id="games" class="tab-content games-tab">
+    <div class="game-link-box">
+      <p class="hint">افتح الرابط ده من متصفح <b>الكمبيوتر</b> عشان تظهر شاشة اللعبة:</p>
+      <div class="link-row">
+        <input id="game-link-input" type="text" readonly />
+        <button id="copy-link-btn">نسخ</button>
+      </div>
+    </div>
+
+    <div class="game-picker">
+      <button class="game-pick-btn" data-game="runner">🏃 الجري والقفز</button>
+      <button class="game-pick-btn" data-game="maze">🌀 متاهة الكرة</button>
+    </div>
+
+    <!-- عناصر التحكم الخاصة بلعبة الجري -->
+    <div id="controls-runner" class="game-controls hidden">
+      <button id="jump-btn" class="jump-btn">⬆️ قفز</button>
+      <button id="jump-gyro-toggle" class="gyro-btn">📱 قفز بالميل للأمام</button>
+    </div>
+
+    <!-- عناصر التحكم الخاصة بلعبة المتاهة -->
+    <div id="controls-maze" class="game-controls hidden">
+      <button id="maze-gyro-toggle" class="gyro-btn">📱 تفعيل التحكم بالميل (موصى بيه)</button>
+      <p class="hint center">أو استخدم الأزرار تحت لو مفيش جيروسكوب:</p>
+      <div class="dpad">
+        <button class="dpad-btn dpad-up" data-move="up">▲</button>
+        <div class="dpad-mid">
+          <button class="dpad-btn dpad-left" data-move="left">◀</button>
+          <button class="dpad-btn dpad-center" disabled></button>
+          <button class="dpad-btn dpad-right" data-move="right">▶</button>
+        </div>
+        <button class="dpad-btn dpad-down" data-move="down">▼</button>
+      </div>
+    </div>
+  </section>
+
+  <script src="client.js"></script>
+</body>
+</html>

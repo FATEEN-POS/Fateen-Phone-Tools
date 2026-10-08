@@ -1,0 +1,88 @@
+/* Fateen Digital Solutions - design tokens v1.3 */
+/* Fonts: IBM Plex Sans Arabic (Arabic) + IBM Plex Sans (English). Files are in /fonts */
+:root {
+  /* slogans */
+  --fd-tagline-ar: "فطين. شغل بيكمّل.";   /* primary slogan */
+  --fd-cta-ar: "خلّي بيزنسك فطين.";       /* ads and CTA only */
+
+  /* brand core */
+  --fd-ink: #0E0E0E;
+  --fd-cream: #F2EFE8;
+  --fd-signal: #FF4F1F;
+
+  /* ink scale */
+  --fd-ink-900: #0E0E0E;
+  --fd-ink-800: #171717;
+  --fd-ink-700: #262626;
+  --fd-ink-600: #3A3A38;
+  /* stone (neutral text) */
+  --fd-stone-500: #5C584E;   /* secondary text on cream (6.18:1) */
+  --fd-stone-400: #9B978D;   /* secondary text on ink ONLY (6.62:1) */
+  --fd-stone-300: #C9C5BA;
+  /* cream scale */
+  --fd-cream-300: #DDD7C9;   /* borders on cream */
+  --fd-cream-200: #E3DDCF;
+  --fd-cream-100: #F2EFE8;
+  --fd-white: #FFFFFF;
+  /* signal scale */
+  --fd-signal-100: #FFE3D9;
+  --fd-signal-500: #FF4F1F;
+  --fd-signal-600: #E8420F;  /* hover / pressed */
+  --fd-signal-700: #C93A12;
+  --fd-signal-800: #B02F0C;  /* orange TEXT on cream (5.61:1) */
+  /* status (software UI only, never in brand materials) */
+  --fd-success: #1F9D55;
+  --fd-warning: #E8A317;
+  --fd-danger:  #D92D20;
+  --fd-info:    #2563EB;
+
+  /* type: two families only */
+  --fd-font-ar: "IBM Plex Sans Arabic", "IBM Plex Sans", system-ui, sans-serif;
+  --fd-font-en: "IBM Plex Sans", "IBM Plex Sans Arabic", system-ui, sans-serif;
+
+  /* shape + space */
+  --fd-radius-sm: 8px;
+  --fd-radius-md: 14px;
+  --fd-radius-lg: 22px;
+  --fd-radius-pill: 999px;
+  --fd-space-1: 4px;  --fd-space-2: 8px;  --fd-space-3: 12px; --fd-space-4: 16px;
+  --fd-space-5: 24px; --fd-space-6: 32px; --fd-space-7: 48px; --fd-space-8: 72px;
+  --fd-shadow-1: 0 1px 2px rgba(14,14,14,.08), 0 4px 12px rgba(14,14,14,.06);
+  --fd-shadow-2: 0 10px 30px rgba(14,14,14,.18);
+}
+
+/* semantic theme: dark is the primary brand surface */
+[data-theme="dark"], :root {
+  --bg: var(--fd-ink-900);
+  --surface: var(--fd-ink-800);
+  --surface-2: var(--fd-ink-700);
+  --border: #2A2A28;
+  --text: var(--fd-cream-100);
+  --text-muted: var(--fd-stone-400);
+  --accent: var(--fd-signal-500);
+  --accent-hover: var(--fd-signal-600);
+  --on-accent: var(--fd-ink-900);   /* ink on orange = 5.87:1. Never white. */
+  --accent-text: var(--fd-signal-500);
+}
+[data-theme="light"] {
+  --bg: var(--fd-cream-100);
+  --surface: #FAF8F3;
+  --surface-2: var(--fd-cream-200);
+  --border: var(--fd-cream-300);
+  --text: var(--fd-ink-900);
+  --text-muted: var(--fd-stone-500);
+  --accent: var(--fd-signal-500);
+  --accent-hover: var(--fd-signal-600);
+  --on-accent: var(--fd-ink-900);
+  --accent-text: var(--fd-signal-800);   /* orange text on light must use 800 */
+}
+
+/* base */
+html { font-family: var(--fd-font-ar); background: var(--bg); color: var(--text); }
+html[lang="en"] { font-family: var(--fd-font-en); }
+html[lang="ar"], [dir="rtl"] { line-height: 1.8; }
+h1,h2,h3,h4 { font-weight: 700; line-height: 1.25; letter-spacing: 0; }
+.fd-label { font-family: var(--fd-font-en); font-weight: 600; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; }
+.fd-btn { font: 700 16px var(--fd-font-ar); background: var(--accent); color: var(--on-accent); border: 0; border-radius: var(--fd-radius-pill); padding: 12px 24px; cursor: pointer; }
+.fd-btn:hover { background: var(--accent-hover); }
+.fd-btn:focus-visible { outline: 3px solid var(--text); outline-offset: 3px; }

@@ -1,0 +1,18 @@
+{
+  "name": "phone-tools",
+  "version": "0.1.0",
+  "description": "Phone as a remote for your PC: one server, many modules",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "qrcode-terminal": "^0.12.0",
+    "selfsigned": "^2.4.1",
+    "ws": "^8.18.0"
+  },
+  "optionalDependencies": {
+    "@nut-tree-fork/nut-js": "^4.2.6",
+    "vigemclient": "^1.5.3"
+  }
+}

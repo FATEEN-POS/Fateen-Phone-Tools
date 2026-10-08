@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Phone Tools - من الكمبيوتر</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20rx%3D%2222%22%20fill%3D%22%230E0E0E%22/%3E%3Cpath%20d%3D%22M24.92%2C17.00%20L65.84%2C17.00%20L65.84%2C32.84%20L40.76%2C32.84%20L40.76%2C42.08%20L57.92%2C42.08%20L57.92%2C57.92%20L40.76%2C57.92%20L40.76%2C83.00%20L24.92%2C83.00%20Z%22%20fill%3D%22%23F2EFE8%22/%3E%3Ccircle%20cx%3D%2267.16%22%20cy%3D%2250.00%22%20r%3D%226.27%22%20fill%3D%22%23FF4F1F%22/%3E%3C/svg%3E">
+<style>body{margin:0;background:#0E0E0E;color:#F2EFE8;font:16px "IBM Plex Sans Arabic","IBM Plex Sans","Segoe UI",Tahoma,sans-serif;padding:32px;max-width:560px;margin:auto}
+textarea{width:100%;min-height:120px;background:#171717;color:inherit;border:1px solid #2A2A28;border-radius:12px;padding:12px;font:inherit;box-sizing:border-box}
+button{color:#0E0E0E;background:#FF4F1F;border:0;border-radius:12px;padding:12px 20px;font:inherit;font-weight:700;cursor:pointer;margin:10px 8px 0 0}button.b{background:#171717;color:inherit;border:1px solid #2A2A28}#s{color:#9B978D;margin-top:14px}</style></head>
+<body><h1>ابعت للموبايل</h1>
+<textarea id="t" placeholder="نص أو لينك (اللينك بيظهر بزر فتح)"></textarea>
+<button id="send">ابعت</button><button class="b" id="ring">🔔 رن على الموبايل</button><div id="s"></div>
+<script>
+async function push(kind, text) {
+  const r = await fetch('/api/push', { method: 'POST', headers: { 'x-pts': '1', 'content-type': 'application/json' }, body: JSON.stringify({ kind, text }) });
+  document.getElementById('s').textContent = r.ok ? 'اتبعت للموبايلات المتصلة.' : 'مافيش اتصال أو الطلب اترفض.';
+}
+send.onclick = () => { const v = t.value.trim(); if (v) { push('text', v); t.value = ''; } };
+ring.onclick = () => push('ring', '');
+</script></body></html>

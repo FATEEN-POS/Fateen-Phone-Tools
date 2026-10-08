@@ -1,0 +1,47 @@
+{
+  "port": 47100,
+  "pin": "848718",
+  "shares": [
+    "C:\\Users\\Dell\\Downloads",
+    "C:\\Users\\Dell\\Documents"
+  ],
+  "macros": [
+    {
+      "id": "m1",
+      "label": "Google",
+      "icon": "🌐",
+      "url": "https://google.com"
+    },
+    {
+      "id": "m2",
+      "label": "Desktop",
+      "icon": "🖥️",
+      "key": "win+d"
+    },
+    {
+      "id": "m3",
+      "label": "Lock PC",
+      "icon": "🔒",
+      "key": "win+l"
+    },
+    {
+      "id": "m4",
+      "label": "Notepad",
+      "icon": "📝",
+      "run": "notepad"
+    },
+    {
+      "id": "m5",
+      "label": "Work mode",
+      "icon": "🚀",
+      "steps": [
+        {
+          "url": "https://google.com"
+        },
+        {
+          "run": "notepad"
+        }
+      ]
+    }
+  ]
+}

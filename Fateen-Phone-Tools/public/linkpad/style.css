@@ -1,0 +1,469 @@
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+body {
+  margin: 0;
+  font-family: "IBM Plex Sans Arabic", "IBM Plex Sans", -apple-system, 'Segoe UI', Tahoma, sans-serif;
+  background: #0E0E0E;
+  color: #F2EFE8;
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  --touchpad-height: 55vh;
+}
+
+.top-bar {
+  display: flex;
+  align-items: stretch;
+}
+.top-bar .status { flex: 1; }
+.settings-btn {
+  width: 46px;
+  background: #171717;
+  border: none;
+  border-right: 1px solid #262626;
+  font-size: 18px;
+  color: #C9C5BA;
+}
+.settings-btn:active { background: #262626; }
+
+.status {
+  text-align: center;
+  padding: 8px;
+  font-size: 13px;
+  font-weight: bold;
+}
+.status.connected { background: #1F9D55; color: #0E0E0E; }
+.status.disconnected { background: #D92D20; color: #F2EFE8; }
+
+.tabs {
+  display: flex;
+  background: #171717;
+}
+.tab-btn {
+  flex: 1;
+  padding: 12px 0;
+  background: none;
+  border: none;
+  color: #9B978D;
+  font-size: 15px;
+  border-bottom: 3px solid transparent;
+}
+.tab-btn.active {
+  color: #F2EFE8;
+  border-bottom-color: #FF4F1F;
+}
+
+.tab-content {
+  display: none;
+  flex: 1;
+  flex-direction: column;
+  padding: 12px;
+  overflow: hidden;
+}
+.tab-content.active { display: flex; }
+
+.touchpad-area {
+  height: var(--touchpad-height, 55vh);
+  flex-shrink: 0;
+  background: #1C1C1C;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: none;
+  border: 2px dashed #3A3A38;
+}
+.hint {
+  color: #9B978D;
+  font-size: 14px;
+  text-align: center;
+  padding: 0 20px;
+}
+.hint.center { margin-top: 20px; }
+
+.mouse-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+.mouse-btn {
+  flex: 1;
+  padding: 18px 0;
+  background: #262626;
+  color: #F2EFE8;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+}
+.mouse-btn:active { background: #FF4F1F; }
+
+.scroll-hint {
+  text-align: center;
+  font-size: 12px;
+  color: #9B978D;
+  margin-top: 8px;
+}
+
+.key-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.key-btn {
+  padding: 20px 0;
+  background: #262626;
+  color: #F2EFE8;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+}
+.key-btn:active { background: #FF4F1F; }
+.key-btn.wide { grid-column: span 3; }
+
+.text-input-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+#text-input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #3A3A38;
+  background: #1C1C1C;
+  color: #F2EFE8;
+  font-size: 16px;
+}
+#send-text-btn {
+  padding: 0 18px;
+  border: none;
+  border-radius: 10px;
+  background: #FF4F1F;
+  color: #F2EFE8;
+  font-size: 15px;
+}
+
+/* ---------- الجويستيك الحقيقي (Gamepad / ViGEm) ---------- */
+.controller-tab {
+  padding: 8px 6px;
+  gap: 8px;
+}
+
+.gamepad-status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+.gamepad-status-bar.connected { background: #1F9D55; color: #0E0E0E; }
+.gamepad-status-bar.disconnected { background: #262626; color: #9B978D; }
+#gamepad-connect-btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  background: #FF4F1F;
+  color: #F2EFE8;
+  font-size: 13px;
+}
+
+.gamepad-layout {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  touch-action: none;
+}
+
+.shoulder-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+.shoulder-btn, .trigger-btn {
+  flex: 1;
+  padding: 14px 0;
+  background: #262626;
+  color: #F2EFE8;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
+.shoulder-btn:active, .trigger-btn:active { background: #FF4F1F; }
+
+.middle-row {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.joystick-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.joystick-base {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: #1C1C1C;
+  border: 2px solid #3A3A38;
+  position: relative;
+  touch-action: none;
+}
+.joystick-handle {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #FF4F1F;
+  position: absolute;
+  top: 32px;
+  left: 32px;
+  pointer-events: none;
+}
+
+.center-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.dpad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.dpad-mid { display: flex; align-items: center; }
+.dpad-btn {
+  width: 36px;
+  height: 36px;
+  background: #262626;
+  color: #F2EFE8;
+  border: none;
+  font-size: 13px;
+}
+.dpad-btn:active { background: #FF4F1F; }
+.dpad-up { border-radius: 8px 8px 0 0; }
+.dpad-down { border-radius: 0 0 8px 8px; }
+.dpad-left { border-radius: 8px 0 0 8px; }
+.dpad-right { border-radius: 0 8px 8px 0; }
+.dpad-center { background: #171717; }
+
+.menu-buttons { display: flex; gap: 8px; }
+.menu-btn {
+  padding: 6px 10px;
+  background: #262626;
+  color: #C9C5BA;
+  border: none;
+  border-radius: 8px;
+  font-size: 11px;
+}
+.menu-btn:active { background: #FF4F1F; }
+
+.abxy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.abxy-mid { display: flex; gap: 34px; }
+.face-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  color: #F2EFE8;
+  font-weight: bold;
+  font-size: 14px;
+}
+.face-y { background: #E8A317; }
+.face-x { background: #C93A12; }
+.face-b { background: #D92D20; }
+.face-a { background: #1F9D55; }
+.face-btn:active { filter: brightness(1.3); }
+
+.right-stick-row {
+  display: flex;
+  justify-content: flex-end;
+  padding: 6px 10px 10px;
+}
+
+/* ---------- أزرار الجيروسكوب ---------- */
+.gyro-btn {
+  padding: 14px 0;
+  background: #262626;
+  color: #F2EFE8;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  margin-top: 10px;
+  width: 100%;
+}
+.gyro-btn.active {
+  background: #FF4F1F;
+}
+
+.gyro-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.gyro-row .gyro-btn {
+  margin-top: 0;
+  flex: 2;
+  font-size: 13px;
+  padding: 10px 6px;
+}
+#gyro-stick-select {
+  flex: 1;
+  border-radius: 10px;
+  border: 1px solid #3A3A38;
+  background: #1C1C1C;
+  color: #F2EFE8;
+  font-size: 12px;
+  padding: 0 6px;
+}
+
+/* ---------- لوحة الإعدادات ---------- */
+.settings-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+}
+.settings-overlay.open { display: flex; }
+
+.settings-panel {
+  background: #171717;
+  border-radius: 16px;
+  padding: 20px;
+  width: 88%;
+  max-width: 360px;
+}
+.settings-panel h3 {
+  margin: 0 0 16px;
+  font-size: 17px;
+}
+
+.setting-row {
+  margin-bottom: 18px;
+}
+.setting-row label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #C9C5BA;
+  margin-bottom: 8px;
+}
+.setting-val {
+  color: #FF4F1F;
+  font-weight: bold;
+}
+.setting-row input[type="range"] {
+  width: 100%;
+  accent-color: #FF4F1F;
+}
+.setting-hint {
+  display: block;
+  font-size: 11px;
+  color: #9B978D;
+  margin-top: 4px;
+}
+
+.settings-close-btn {
+  width: 100%;
+  padding: 12px 0;
+  margin-top: 6px;
+  background: #FF4F1F;
+  color: #F2EFE8;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+/* ---------- تبويب الألعاب ---------- */
+.games-tab { gap: 10px; }
+
+.game-link-box {
+  background: #1C1C1C;
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+.game-link-box .hint {
+  text-align: right;
+  padding: 0 0 8px;
+  font-size: 12px;
+  color: #9B978D;
+}
+.link-row { display: flex; gap: 8px; }
+#game-link-input {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #3A3A38;
+  background: #0E0E0E;
+  color: #C9C5BA;
+  font-size: 12px;
+  direction: ltr;
+  text-align: left;
+}
+#copy-link-btn {
+  padding: 0 16px;
+  border: none;
+  border-radius: 8px;
+  background: #FF4F1F;
+  color: #F2EFE8;
+  font-size: 13px;
+}
+
+.game-picker {
+  display: flex;
+  gap: 10px;
+}
+.game-pick-btn {
+  flex: 1;
+  padding: 16px 0;
+  background: #262626;
+  color: #F2EFE8;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+}
+.game-pick-btn.active { background: #FF4F1F; }
+
+.game-controls { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+.game-controls.hidden { display: none; }
+
+.jump-btn {
+  width: 100%;
+  padding: 30px 0;
+  background: #FF4F1F;
+  color: #F2EFE8;
+  border: none;
+  border-radius: 16px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.jump-btn:active { background: #E8420F; }
+
+/* ── Fateen brand layer (identity v1.4: ink / cream / signal orange, flat, IBM Plex) ── */
+#send-text-btn, #gamepad-connect-btn, .settings-close-btn, #copy-link-btn, .jump-btn, .gyro-btn.active, .game-pick-btn.active,
+.mouse-btn:active, .key-btn:active, .shoulder-btn:active, .trigger-btn:active, .dpad-btn:active, .menu-btn:active { color: #0E0E0E; font-weight: 700; }
+.status.connected, .gamepad-status-bar.connected { color: #0E0E0E; }
+.mk { display:inline-flex; width:18px; height:18px; flex:none; }
+.mk svg { width:100%; height:100%; }
+.brand-bar { display:flex; align-items:center; justify-content:center; gap:8px; padding:6px; background:#171717; border-bottom:1px solid #2A2A28; font-size:13px; color:#9B978D; text-decoration:none; }
+.brand-bar b { font-family:"IBM Plex Sans",sans-serif; font-weight:600; letter-spacing:.18em; font-size:11px; color:#FF4F1F; }
